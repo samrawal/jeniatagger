@@ -1,1 +1,0 @@
-java -jar jeniatagger-0.4.0-jar-with-dependencies.jar 

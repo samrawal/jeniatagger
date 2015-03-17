@@ -13,6 +13,8 @@ import com.jmcejuela.bio.jenia.common.Sentence;
  * From main.cpp
  */
 public class Main {
+	
+  public static String input ="GTP hydrolysis triggers the Ras protein pathway.";;
 
   public static final String version = "0.4.0";
 
@@ -60,8 +62,10 @@ public class Main {
    * @param args
    * @throws IOException
    */
+  
+  
   public static void main(String[] args) throws IOException {
-    boolean dont_tokenize = false;
+    boolean dont_tokenize = true;
     String ifilename = null;
     // String ofilename;
 
@@ -82,29 +86,31 @@ public class Main {
       printHelpAndExit(e);
     }
 
-    // default, standard input
-    BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-    if (ifilename != null && !ifilename.isEmpty() && !ifilename.equals("-")) {
-      in = new BufferedReader(new FileReader(new File(ifilename)));
-    }
+    //IF YOU WANT TO USE BUFFEREDREADER, UNCOMMENT THE COMMENTS, AND SET 'line' = 'in'
+// default, standard input
+//    BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+//    if (ifilename != null && !ifilename.isEmpty() && !ifilename.equals("-")) {
+//      in = new BufferedReader(new FileReader(new File(ifilename)));
+//    }
+    
 
     // ----------------------------------------------------------------------------
 
-    System.err.println("Ready (the first sentence will take longer until all dictionaries are loaded)");
+    System.err.println("Parsing... (the first sentence will take longer until all dictionaries are loaded)");
 
-    String line;
+    String line=input;
     int n = 1;
-    while ((line = in.readLine()) != null) {
-      if (line.length() > 1024) {
-        System.err.println("warning: the sentence seems to be too long at line " + n +
-            " (please note that the input should be one-sentence-per-line).");
-      }
+//    while ((line = in.readLine()) != null) {
+//      if (line.length() > 1024) {
+//        System.err.println("warning: the sentence seems to be too long at line " + n +
+//            " (please note that the input should be one-sentence-per-line).");
+//      }
       Sentence analysis = JeniaTagger.analyzeAll(line, dont_tokenize);
       System.out.println(analysis);
       n++;
     }
 
-    in.close();
-    System.out.flush();
+//    in.close();
+//    System.out.flush();
   }
-}
+//}

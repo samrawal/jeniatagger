@@ -23,7 +23,7 @@ public class JeniaTagger {
   // public static final int NER = 8;
   // public static final int ALL_ANALYSES = SHALLOW_PARSING | BASE_FORM | NER;
 
-  private static File MODELS_PATH = null;
+  private static File MODELS_PATH = new File("/Users/samrawal/Documents/Non-Class/Github/jeniatagger/src/test/resources/models");
 
   static File getModelsPath() {
     if (MODELS_PATH == null)
@@ -41,7 +41,7 @@ public class JeniaTagger {
    */
   public static void setModelsPath(String path) {
     try {
-      MODELS_PATH = new File(path);
+      MODELS_PATH = new File("/Users/samrawal/Documents/Non-Class/Github/jeniatagger/src/test/resources/models");
       if (!MODELS_PATH.exists()) throw new Exception();
     } catch (Exception e) {
       throw new RuntimeException("The models path is not valid or cannot be read: " + path);

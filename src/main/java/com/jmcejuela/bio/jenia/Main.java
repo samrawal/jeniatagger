@@ -95,7 +95,7 @@ public class Main {
     
 
     // ----------------------------------------------------------------------------
-
+    System.out.println("Sentence: "+input);
     System.err.println("Parsing... (the first sentence will take longer until all dictionaries are loaded)");
 
     String line=input;
